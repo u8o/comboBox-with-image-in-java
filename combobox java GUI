@@ -1,0 +1,51 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class act extends JFrame{
+	private JLabel imageLabel;
+	private JComboBox comboBox;
+	private String[] iconNames = {"Java" , "Android" , "PHP" , "Phython"};
+	private Icon[] icons = {
+			new ImageIcon(getClass().getResource( "/tets/src/img/Image1.jfif")),
+			new ImageIcon(getClass().getResource( "/tets/src/img/Image2.jfif")),
+			new ImageIcon(getClass().getResource( "/tets/src/img/Image 3.jfif")),
+			new ImageIcon(getClass().getResource( "/tets/src/img/Image4.jfif"))
+
+	};
+	
+	public act() {
+		super("Display Images");
+		setLayout(new FlowLayout());
+		comboBox = new JComboBox(iconNames);
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					imageLabel.setIcon(icons[comboBox.getSelectedIndex()]);
+				}
+			}
+		});
+		add(comboBox);
+		
+	}
+}
+
+
+
+
+
+
+
+
+//MainClass
+
+
+package tets;
+public class MainClass {
+	public static void main(String[] args) {
+		act ac = new act();
+		ac.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ac.setSize(250,150);
+		ac.setVisible(true);
+		ac.setLocationRelativeTo(null);
+}
